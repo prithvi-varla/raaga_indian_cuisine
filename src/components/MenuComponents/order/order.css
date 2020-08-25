@@ -1,0 +1,145 @@
+@media (max-width: 991px) {
+  .order-container {
+    display: none;
+  }
+}
+
+.order-container h1 {
+  color: #fff;
+}
+
+.order-container {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 25%;
+  height: 100%;
+  padding: 100px 0 80px;
+  background-color: white;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.inner-order-container {
+  height: 100%;
+}
+
+.order-header {
+  height: 50px;
+  padding: 15px;
+  border-bottom: 1px solid #e4e4e4;;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.order-restaurant-name span {
+  color: #165b98;
+  cursor: pointer;
+}
+
+.order-empty-background {
+  background: url('https://res.cloudinary.com/sivadass/image/upload/v1495427934/icons/empty-cart.png') 50% no-repeat;
+  color: #cacaca;
+  height: 300px;
+  background-size: contain;
+  margin-top: 100px
+}
+
+.order-empty-text {
+  padding: 25px;
+  text-align: center;
+}
+
+.order-empty-text h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #cacaca;
+}
+
+.main-order-container {
+  height: calc(100% - 46px);
+  overflow: auto;
+}
+
+.order-total-container {
+  padding: 26px 16px;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.order-total {
+  display: flex;
+  justify-content: space-between;
+  margin: 2px 0;
+}
+
+.empty-bag {
+  color: #165b98;
+  font-weight: 700;
+  margin-top: 26px;
+  cursor: pointer;
+}
+
+.proceed-to-checkout-button-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  text-align: center;
+  background: white;
+  z-index: 1;
+}
+
+.proceed-to-checkout-button {
+  width: 100%;
+  padding: 14px 18px;
+  background: #165b98;
+  /* background: #13aa37; */
+  color: white;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.proceed-to-checkout-button:hover {
+  box-shadow: inset 9999px 9999px rgba(0, 0, 0, 0.3);
+}
+
+.only-on-checkout {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.modify-order {
+  width: 100%;
+  padding: 5px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 100;
+  background: #165b98;
+  /* background: #2b8282; */
+  cursor: pointer;
+}
+
+.total-only-on-checkout {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 24px;
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+  background: #323232;
+}
+
+.delivery-minimum-error-container {
+  position: absolute;
+  bottom: 85px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}

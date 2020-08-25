@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'Cardo';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Cardo Italic'), local('Cardo-Italic'), url(https://fonts.gstatic.com/s/cardo/v11/wlpxgwjKBV1pqhv97IAx2Q.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Cardo';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Cardo'), local('Cardo-Regular'), url(https://fonts.gstatic.com/s/cardo/v11/wlp_gwjKBV1pqhv73IQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Cardo';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Cardo Bold'), local('Cardo-Bold'), url(https://fonts.gstatic.com/s/cardo/v11/wlpygwjKBV1pqhND-ZQV-WY.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Great Vibes';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Great Vibes'), local('GreatVibes-Regular'), url(https://fonts.gstatic.com/s/greatvibes/v7/RWmMoKWR9v4ksMfaWd_JN9XFiaE.ttf) format('truetype');
+}

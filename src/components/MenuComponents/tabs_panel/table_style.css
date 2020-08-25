@@ -1,0 +1,16 @@
+/* Test 123 */
+
+.react-tabs__tab-list {
+    /* position: inherit; */
+    border: 1px solid #aaa;
+    margin: 0 0 10px;
+    padding: 0;
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 200);
+}
+
+.react-tabs__tab--selected {
+    /* background: #fff; */
+    border-color: #aaa;
+    color: black;
+    /* border-radius: 5px 5px 0 0; */
+}

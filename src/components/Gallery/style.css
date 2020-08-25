@@ -1,0 +1,19 @@
+/*--------------------------------------------------------------
+  ##  Gallery
+  --------------------------------------------------------------*/
+  
+  .gallery1 {
+    padding: 120px 0;
+  }
+
+  .gallery-title {
+    font-size: 45px;
+    padding: 1% 35% 1%;
+    font-family: "Great Vibes", cursive;
+  }
+
+  .test321 {
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    padding: 1% 35% 1%;
+  }
+  

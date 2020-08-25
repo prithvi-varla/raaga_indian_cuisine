@@ -1,0 +1,270 @@
+
+
+
+@media (min-width: 992px) {
+  .checkout-container {
+    width: 75%;
+  }
+}
+
+@media (max-width: 991px) {
+  .checkout-container {
+    width: 100%;
+  }
+}
+
+
+.checkout-container {
+  display: flex;
+  position: relative;
+  /* Test 123  */
+  top: 60px;
+  
+  height: 100%;
+  background: #f7f7f7;
+}
+
+.checkout-main {
+  padding: 32px;
+  padding-top: 10%;
+  width: 100%;
+  min-height: calc(100vh - 60px);
+}
+
+.checkout-main h1 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.checkout-main h5 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.checkout-main h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.checkout-main input {
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  padding: 12px 16px;
+  background: white;
+  margin-bottom: 20px;
+}
+
+.contact-input {
+  display: block;
+  width: 50%;
+}
+
+.checkout-main input:focus, .deliveryInstructions:focus {
+  border: 2px solid rgba(81, 150, 238, 1);
+  box-shadow: 0 0 10px rgba(81, 150, 238, 1);
+}
+
+.checkout-main input:-moz-read-only {
+  color: rgba(0, 0, 0, 0.7);
+  border-color: rgba(0, 0, 0, 0.4);
+  cursor: not-allowed;
+}
+
+.checkout-main input:-moz-read-only:focus {
+  border: 2px solid rgba(0, 0, 0, 0.4);
+  box-shadow: none;
+}
+
+.checkout-main input:read-only {
+  color: rgba(0, 0, 0, 0.7);
+  border-color: rgba(0, 0, 0, 0.4);
+  cursor: not-allowed;
+}
+
+.checkout-main input:read-only:focus {
+  border: 2px solid rgba(0, 0, 0, 0.4);
+  box-shadow: none;
+}
+
+.address-input-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.address-input {
+  margin: 8px 0;
+  max-width: 33.333%;
+  flex-basis: 33.333%;
+}
+
+.address-input:nth-last-of-type(3n + 2) {
+  margin-right: 18px;
+  margin-left: 18px;
+}
+
+.deliveryInstructions {
+  width: 100%;
+  min-height: 100px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  padding: 12px 16px;
+  background: white;
+  margin: 10px 0;
+}
+
+.continue-to-payment {
+  width: 100%;
+  min-height: 56px;
+  background: #165b98;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.continue-to-payment:hover {
+  box-shadow: inset 9999px 9999px rgba(0, 0, 0, 0.3);
+}
+
+.checkout-main ul {
+  margin-bottom: 60px;
+}
+
+.checkout-main ul li:first-child {
+  text-transform: uppercase;
+}
+
+.payment-input-form {
+  display: flex;
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+.payment-input-form h6, .payee-container h6 {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 14px;
+}
+
+.payee-container {
+  width: 33%;
+}
+
+.card-number-container {
+  flex-basis: 33.333%;
+}
+
+.expires-on-container {
+  flex-basis: 16.667%;
+  padding-left: 8px;
+}
+
+.security-code-container, .postal-code-container {
+  flex-basis: 25%;
+  padding-left: 8px;
+}
+
+.payment-input-form input, #payee {
+  width: 100%;
+  margin-top: 4px;
+}
+
+.tip-entry-container {
+  display: flex;
+  margin-bottom: 60px;
+}
+
+.preset-tip-container {
+  max-width: 50%;
+  flex-basis: 50%;
+  padding-right: 12px;
+}
+
+.preset-tip-container button:first-of-type, .custom-tip-container button {
+  border-left-width: 2px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.preset-tip-container button:last-of-type {
+  border-right-width: 2px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.custom-tip-container {
+  display: flex;
+  align-items: flex-end;
+  max-width: 50%;
+  flex-basis: 50%;
+  padding-left: 12px;
+}
+
+.tip {
+  width: 25%;
+  height: 48px;
+  flex-basis: 25%;
+  padding: 12px 16px;
+  border-width: 2px 1px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.2);
+  color: #165b98;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.tip:hover {
+  background: #165b98;
+  color: white;
+  box-shadow: inset 9999px 9999px rgba(0, 0, 0, 0.3);
+}
+
+.tip-selected {
+  width: 25%;
+  height: 48px;
+  flex-basis: 25%;
+  padding: 12px 16px;
+  border-width: 2px 1px;
+  border-style: solid;
+  border-color: #165b98;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  color: white;
+  background: #165b98;
+}
+
+.custom-tip-container button {
+  padding: 0;
+}
+
+#custom-tip-input {
+  width: 75%;
+  height: 48px;
+  flex-basis: 75%;
+  border-left-width: 1px;
+  border-radius: 0 4px 4px 0;
+  margin: 0;
+}
+
+
+.place-your-order {
+  width: 100%;
+  min-height: 56px;
+  background: #165b98;
+  /* background: #13aa37; */
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.place-your-order:hover {
+  box-shadow: inset 9999px 9999px rgba(0, 0, 0, 0.3);
+}
