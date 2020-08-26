@@ -4,4 +4,4 @@ node_js:
   - '14'
 
 script:
-  - yarn run build
+  - CI=false yarn run build
