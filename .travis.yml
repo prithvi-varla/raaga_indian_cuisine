@@ -1,13 +1,7 @@
 language: node_js
 
 node_js:
-  - '13'
+  - '14'
 
 script:
   - npm run build
-
-deploy:
-  provider: heroku
-  app: <your_heroku_app_name>
-  api_key:
-    secure: <your_secure_key>
