@@ -23,15 +23,15 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchCategories: (restaurantId,categoryType) => dispatch(fetchCategories(restaurantId, categoryType)),
-  fetchSubCategories: (restaurantId,categoryType) => dispatch(fetchSubCategories(restaurantId, categoryType)),
-  fetchMenuItems: restaurantId => dispatch(fetchMenuItems(restaurantId)),
-  fetchReviews: restaurantId => dispatch(fetchReviews(restaurantId)),
-  fetchReviewable: restaurantId => dispatch(fetchReviewable(restaurantId)),
+  fetchCategories: (restaurantId,categoryType) => dispatch(fetchCategories(categoryType)),
+  fetchSubCategories: (restaurantId,categoryType) => dispatch(fetchSubCategories( categoryType)),
+  fetchMenuItems: restaurantId => dispatch(fetchMenuItems()),
+  fetchReviews: restaurantId => dispatch(fetchReviews()),
+  fetchReviewable: restaurantId => dispatch(fetchReviewable()),
   toggleMenuItemModal: () => dispatch(toggleMenuItemModal()),
   toggleReviewModal: () => dispatch(toggleReviewModal()),
   deleteAllItems: () => dispatch(deleteAllItems()),
-  fetchRestaurantInfo: restaurantId => dispatch(fetchRestaurants(restaurantId))
+  fetchRestaurantInfo: restaurantId => dispatch(fetchRestaurants())
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RestaurantShow));

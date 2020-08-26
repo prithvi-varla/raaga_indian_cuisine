@@ -48,23 +48,23 @@ export const clearErrors = () => ({
   type: CLEAR_ERRORS
 });
 
-export const fetchMenuItems = restaurantId => dispatch => {
+export const fetchMenuItems = () => dispatch => {
   return (
-    MenuUtil.fetchMenuItems(restaurantId)
+    MenuUtil.fetchMenuItems()
     .then((menuItems) => dispatch(receiveMenuItems(menuItems)))
   );
 };
 
-export const fetchCategories = (companyId, categoryType) => dispatch => {
+export const fetchCategories = ( categoryType) => dispatch => {
   return (
-    MenuUtil.fetchCategories("12345678-1234-1234-1234-123456789116", categoryType)
+    MenuUtil.fetchCategories(categoryType)
     .then((categories) => dispatch(receiveCategories(categories)))
   );
 };
 
-export const fetchSubCategories = (companyId, categoryType) => dispatch => {
+export const fetchSubCategories = ( categoryType) => dispatch => {
   return (
-    MenuUtil.fetchCategories("12345678-1234-1234-1234-123456789116", categoryType)
+    MenuUtil.fetchCategories(categoryType)
     .then((categories) => dispatch(receiveSubCategories(categories)))
   );
 };

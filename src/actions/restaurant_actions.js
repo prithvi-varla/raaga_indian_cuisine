@@ -63,9 +63,9 @@ export const receiveFilterErrors = (filterCategory) => {
   });
 };
 
-export const fetchRestaurants = address => dispatch => {
+export const fetchRestaurants = () => dispatch => {
   return (
-    AddressSearchUtil.fetchRestaurants(address)
+    AddressSearchUtil.fetchRestaurants()
     .then((restaurants) => dispatch(receiveRestaurants(restaurants)))
   );
 };

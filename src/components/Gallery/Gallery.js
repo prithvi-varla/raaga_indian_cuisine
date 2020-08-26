@@ -86,7 +86,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   createReview: review => dispatch(createReview(review)),
-  fetchRestaurantInfo: restaurantId => dispatch(fetchRestaurants(restaurantId))
+  fetchRestaurantInfo: () => dispatch(fetchRestaurants())
 });
 
 class Gallery extends React.Component {
@@ -126,7 +126,7 @@ class Gallery extends React.Component {
     
     if (!this.props.restaurant.companyId) {
 
-      this.props.fetchRestaurantInfo("12345678-1234-1234-1234-123456789116");
+      this.props.fetchRestaurantInfo();
     } 
   }
 

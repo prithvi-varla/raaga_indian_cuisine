@@ -1,12 +1,8 @@
-export const createOrder = payload => {
-  /* return $.ajax({
-    method: 'POST',
-    url: '/api/orders',
-    data: {order: payload}
-  }); */
+var bonmunch_endpoint = process.env.REACT_APP_BONMUNCH_END_POINT;
 
-//Test123
-  return fetch('http://localhost:9091/bonmunch/v1/companies/orders', {
+export const createOrder = payload => {
+
+  return fetch(bonmunch_endpoint+'bonmunch/v1/companies/orders', {
     method: 'POST',
     headers: {
       'content-type': 'application/json'
@@ -14,5 +10,4 @@ export const createOrder = payload => {
     body: JSON.stringify(payload)
 
   })
-            //.then(res => res.json())
 };

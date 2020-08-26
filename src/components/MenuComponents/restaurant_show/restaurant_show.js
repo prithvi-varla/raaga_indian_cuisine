@@ -42,9 +42,9 @@ export default class RestaurantShow extends React.Component {
 
      
       this.props.fetchCategories(this.props.restaurant.companyId, "CATEGORY").then(() => {
-        this.props.fetchSubCategories("12345678-1234-1234-1234-123456789116", "SUB_CATEGORY").then(() => {
-          this.props.fetchMenuItems("12345678-1234-1234-1234-123456789116");
-          this.props.fetchMenuItems("12345678-1234-1234-1234-123456789116").then(() => { 
+        this.props.fetchSubCategories("SUB_CATEGORY").then(() => {
+          this.props.fetchMenuItems();
+          this.props.fetchMenuItems().then(() => { 
             var d = this.props.categories.data[0];
             this.toggleCategory(d.categoryId);
             });
@@ -60,7 +60,7 @@ export default class RestaurantShow extends React.Component {
       //}
     } else {
 
-      this.props.fetchRestaurantInfo("12345678-1234-1234-1234-123456789116")
+      this.props.fetchRestaurantInfo()
       //var dfd = Object.values(sessionStorage.getItem('restaurants'));
       //  this.props.fetchMenuItems(this.props.match.params.id);
       //  var dfdd= sessionStorage.getItem('restaurants');
@@ -277,9 +277,9 @@ export default class RestaurantShow extends React.Component {
 
      
       this.props.fetchCategories(this.props.restaurant.companyId, "CATEGORY").then(() => {
-        this.props.fetchSubCategories("12345678-1234-1234-1234-123456789116", "SUB_CATEGORY").then(() => {
-          this.props.fetchMenuItems("12345678-1234-1234-1234-123456789116");
-          this.props.fetchMenuItems("12345678-1234-1234-1234-123456789116").then(() => { 
+        this.props.fetchSubCategories( "SUB_CATEGORY").then(() => {
+          this.props.fetchMenuItems();
+          this.props.fetchMenuItems().then(() => { 
             var d = this.props.categories.data[0];
             this.toggleCategory(d.categoryId);
             });
@@ -295,7 +295,7 @@ export default class RestaurantShow extends React.Component {
       //}
     } else {
 
-      this.props.fetchRestaurantInfo("12345678-1234-1234-1234-123456789116")
+      this.props.fetchRestaurantInfo()
       //var dfd = Object.values(sessionStorage.getItem('restaurants'));
       //  this.props.fetchMenuItems(this.props.match.params.id);
       //  var dfdd= sessionStorage.getItem('restaurants');

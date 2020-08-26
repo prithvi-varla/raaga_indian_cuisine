@@ -1,4 +1,8 @@
-export const fetchReviews = restaurantId => {
+var bonmunch_endpoint = process.env.REACT_APP_BONMUNCH_END_POINT;
+
+
+
+export const fetchReviews = () => {
   /*
   return $.ajax({
     method: 'GET',
@@ -8,15 +12,8 @@ export const fetchReviews = restaurantId => {
 };
 
 export const createReview = review => {
-  /* return $.ajax({
-    method: 'POST',
-    url: `/api/restaurants/${review.restaurant_id}/reviews`,
-    data: { review }
-  }); */
 
-  //Test123
-  //Test123
-  return fetch('http://localhost:9091/restaurant/v1/reviews', {
+  return fetch(bonmunch_endpoint+'/restaurant/v1/reviews', {
     method: 'POST',
     headers: {
       'content-type': 'application/json'
@@ -26,7 +23,7 @@ export const createReview = review => {
   })
 };
 
-export const fetchReviewable = restaurantId => {
+export const fetchReviewable = () => {
   /*
   return $.ajax({
     method: 'GET',

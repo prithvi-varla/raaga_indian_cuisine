@@ -1,11 +1,9 @@
+var bonmunch_endpoint = process.env.REACT_APP_BONMUNCH_END_POINT;
+var customer_entityID = process.env.REACT_APP_ENTITY_ID;
+
 export const signup = (user) => {
-  //return $.ajax({
-  //  method: 'POST',
-  //  url: '/api/users',
-  //  data: { user }
-  //});
-  //Test123
-  return fetch('http://localhost:9091/bonmunch/v1/companies/12345678-1234-1234-1234-123456789116/users', {
+
+  return fetch(bonmunch_endpoint+'/bonmunch/v1/companies/'+customer_entityID+'/users', {
     method: 'POST',
     headers: {
       'content-type': 'application/json'
@@ -17,13 +15,8 @@ export const signup = (user) => {
 };
 
 export const login = (user) => {
-  /* return $.ajax({
-    method: 'POST',
-    url: '/api/session',
-    data: { user }
-  }); */
 
-  return fetch('http://localhost:9091/bonmunch/v1/companies/login', {
+  return fetch(bonmunch_endpoint+'/bonmunch/v1/companies/login', {
     method: 'POST',
     headers: {
       'content-type': 'application/json'
@@ -37,12 +30,8 @@ export const login = (user) => {
 };
 
 export const logout = () => {
-  /* return $.ajax({
-    method: 'DELETE',
-    url: '/api/session'
-  }); */
 
-  return fetch('http://localhost:9091/restaurant/v1/users/session', {
+  return fetch(bonmunch_endpoint+'/restaurant/v1/users/session', {
     method: 'DELETE',
     headers: {
       'content-type': 'application/json'

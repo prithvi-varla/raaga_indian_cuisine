@@ -19,9 +19,9 @@ export const receiveReviewable = bool => ({
   bool
 });
 
-export const fetchReviews = restaurantId => dispatch => {
+export const fetchReviews = () => dispatch => {
   return(
-    ReviewUtil.fetchReviews(restaurantId)
+    ReviewUtil.fetchReviews()
     .then(reviews => dispatch(receiveReviews(reviews)))
   );
 };
@@ -34,9 +34,9 @@ export const createReview = review => dispatch => {
   );
 };
 
-export const fetchReviewable = restaurantId => dispatch => {
+export const fetchReviewable = () => dispatch => {
   return(
-    ReviewUtil.fetchReviewable(restaurantId)
+    ReviewUtil.fetchReviewable()
     .then(bool => dispatch(receiveReviewable(bool)))
   );
 };

@@ -55,7 +55,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     fetchImages: (id, imageType) => dispatch(fetchImages(id, imageType)),
-    fetchRestaurantInfo: restaurantId => dispatch(fetchRestaurants(restaurantId))
+    fetchRestaurantInfo: () => dispatch(fetchRestaurants())
   });
 
 class Carousel extends React.Component {
@@ -68,9 +68,7 @@ class Carousel extends React.Component {
 
     componentDidMount() {
         this.timerID = setInterval(this.sliderRef.next, 4000);
-        //this.props.fetchRestaurantInfo("12345678-1234-1234-1234-123456789113");
-        //this.props.fetchImages(this.props.match.params.id, "LANDING_PAGE");
-        this.props.fetchRestaurantInfo("12345678-1234-1234-1234-123456789116").then(() => {
+        this.props.fetchRestaurantInfo().then(() => {
             this.props.fetchImages(this.props.restaurant.companyId, "LANDING_PAGE");
             });
     }
