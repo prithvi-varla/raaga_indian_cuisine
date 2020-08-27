@@ -41,7 +41,7 @@ export default class RestaurantShow extends React.Component {
       var dfd = sessionStorage.getItem('restaurants');
 
      
-      this.props.fetchCategories(this.props.restaurant.companyId, "CATEGORY").then(() => {
+      this.props.fetchCategories("CATEGORY").then(() => {
         this.props.fetchSubCategories("SUB_CATEGORY").then(() => {
           this.props.fetchMenuItems();
           this.props.fetchMenuItems().then(() => { 

@@ -23,8 +23,8 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchCategories: (restaurantId,categoryType) => dispatch(fetchCategories(categoryType)),
-  fetchSubCategories: (restaurantId,categoryType) => dispatch(fetchSubCategories( categoryType)),
+  fetchCategories: (categoryType) => dispatch(fetchCategories(categoryType)),
+  fetchSubCategories: (categoryType) => dispatch(fetchSubCategories( categoryType)),
   fetchMenuItems: restaurantId => dispatch(fetchMenuItems()),
   fetchReviews: restaurantId => dispatch(fetchReviews()),
   fetchReviewable: restaurantId => dispatch(fetchReviewable()),

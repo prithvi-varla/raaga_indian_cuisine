@@ -13,4 +13,3 @@ export const fetchCategories = (categoryType) => {
   return fetch(bonmunch_endpoint+'/bonmunch/v1/companies/'+customer_entityID+'/categories?categoryType='+categoryType)
             .then(res => res.json())
 };
-
