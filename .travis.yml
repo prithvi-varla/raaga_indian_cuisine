@@ -4,7 +4,7 @@ node_js:
   - '14'
 
 script:
-  - CI=false yarn run build
+  - CI=false yarn install
 
 # travis deployment
 deploy:
