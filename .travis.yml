@@ -11,3 +11,5 @@ deploy:
   app: raag-indian-cuisine
   api_key:
     secure: 173c2cdf-67c6-42e0-8ef5-2377a02e44b1
+  on:
+    repo: prithvi-varla/raaga_indian_cuisine
