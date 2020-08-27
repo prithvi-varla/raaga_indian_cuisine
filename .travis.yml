@@ -6,11 +6,12 @@ node_js:
 script:
   - CI=false yarn run build
 
+# travis deployment
 deploy:
   provider: heroku
   app: raag-indian-cuisine
   api_key:
-    secure: 173c2cdf-67c6-42e0-8ef5-2377a02e44b1
+    secure: ddSIRnO1CcG4UDyR6O3LcmVwdC7Qcq9BAlvxEqPeNLm2xbMV1oaySdoWPcU87bf4dcxJDUA4THiK3W5Rpa98vHJFrlf5lhZJpDrhrz963jkFvK/x6nChOPDt+psvoW6xAxdRp7fqjJnigRuvJFTtelNPPj25InsrpKKplKEOV6v5qqx/4aF6hA+R66rsOw4asOyxdLYdoHLPXh/peRb9l1ZjVGnhq0Jy2T850Xc45iZs7peufqGjxc06P/ZLjykdQlEGp4W4yt2pVVrehKEuDqTPX/Og6yt0d8deXKZLQPH9lJd1hTfMEfp2hIsi+J9MC1AERoZW4BpNEfPORavQn3cDAOEDmLx+RKe+YoAU4eBWcdROk9MzsmSuhXe7OAtH6yBBJWxz8Cu212o8mNWYSu3Kij7N0NzPZyEm7CdxOXGBXsRwgzVHSp3KSKSOhkWb97Eq1YvVBNkJZkZOX6WI1UE2Afz97/FUTm5c0REn0cvGZxC0c8qcLcbbSAtSEFwVU6o1C48ZfO92lBxMy66xTegN3K1/9EKr6WupjNUJwiDeFJ13cvGXu2rldQFXV+y243TWmcz0KuPXOSwLjphUKybAHL1fhJW6N7nsynEAPnrALUQFMrC9YI6kxCdjFqd0p/Yeedyrbsnm/cJCI2e526nt8GzXabVSKQFMTeOrjIc=
   on:
     repo: prithvi-varla/raaga_indian_cuisine
   skip_cleanup: true
