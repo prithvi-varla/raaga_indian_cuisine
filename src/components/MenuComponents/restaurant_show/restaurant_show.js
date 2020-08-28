@@ -155,7 +155,7 @@ export default class RestaurantShow extends React.Component {
 
       var productList = this.state.productList == null ?this.props.menuItems : this.state.productList;
       const menuItems =  JSON.stringify(productList) == "{}"? [] : productList.map((menuItem,index) => {
-        return <MenuItem key={menuItem.productId}  menuItem={menuItem} selectItem={this.selectItem} toggleMenuItemModal={toggleMenuItemModal} />;
+        return <div key={menuItem.productId}></div>;
       });
 
       return (
