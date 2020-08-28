@@ -139,7 +139,7 @@ export default class RestaurantShow extends React.Component {
         var classFlag = this.state.selectedSubCategory != null ? subCategory.categoryId == this.state.selectedSubCategory : index==0;
         var classname1 =  classFlag ? "menu-filter active" : "menu-filter";
         return (
-            <div onClick={() => this.toggleSubCategory(subCategory.categoryId)}>
+            <div key={subCategory.categoryId} onClick={() => this.toggleSubCategory(subCategory.categoryId)}>
               {/*
               <a key={subCategory.categoryId} class={classname1} id="nav-antipasti-tab" data-toggle="tab" href="#nav-antipasti" role="tab" aria-controls="nav-antipasti" aria-selected="true">
                 <span>{subCategory.categoryName}</span>
