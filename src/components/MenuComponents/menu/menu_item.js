@@ -5,14 +5,13 @@ import './menu_item.css';
 import storyPic2 from "../../../media/food/3.jpg"
 
 export default class MenuItem extends React.Component {
-
   constructor(props) {
     super(props);
 
-    this.toggleCategory123 = this.toggleCategory123.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  toggleCategory123() {
+  handleClick() {
     this.props.toggleMenuItemModal();
     this.props.selectItem(this.props.menuItem);
   }
@@ -22,9 +21,30 @@ export default class MenuItem extends React.Component {
     const { name, price, description } = this.props.menuItem;
 
     return(
+
+      /*
+      <div className='menu-item-container' onClick={this.handleClick}>
+        <div className='item-name-and-price'>
+          <h5>{name}</h5>
+          <h5>${price}</h5>
+        </div>
+        <div className='item-description'>
+          {description}
+        </div>
+      </div>
+*/
             <div class="col-md-6">
-              <div className='menu-item-container' onClick={() => this.toggleCategory123()}>
+              <div className='menu-item-container' 
+              onClick={this.handleClick}>
                 <div class="food-item">
+                  {/* 
+                  <div class="food-thumb">
+                    <a href="#">
+                      <img src={storyPic2} alt="food" />
+                      <span><i class="ei ei-icon_plus"></i></span>
+                  </a>
+                  </div>
+                  */}
 
                   <div class="content">
                     <h3 class="title"><a >Crema di Pomodoro</a></h3>
