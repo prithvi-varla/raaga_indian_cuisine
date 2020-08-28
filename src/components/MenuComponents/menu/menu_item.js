@@ -22,7 +22,17 @@ export default class MenuItem extends React.Component {
 
     return(
 
-
+      /*
+      <div className='menu-item-container' onClick={this.handleClick}>
+        <div className='item-name-and-price'>
+          <h5>{name}</h5>
+          <h5>${price}</h5>
+        </div>
+        <div className='item-description'>
+          {description}
+        </div>
+      </div>
+*/
             <div class="col-md-6">
               <div className='menu-item-container' 
               onClick={this.handleClick}>
