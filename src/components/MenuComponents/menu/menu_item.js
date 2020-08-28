@@ -17,10 +17,12 @@ export default class MenuItem extends React.Component {
   }
 
   render() {
-
+    //
     const { name, price, description } = this.props.menuItem;
 
     return(
+
+
             <div class="col-md-6">
               <div className='menu-item-container' 
               onClick={this.handleClick}>
