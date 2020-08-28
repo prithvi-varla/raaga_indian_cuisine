@@ -27,7 +27,6 @@ export default class RestaurantShow extends React.Component {
     this.selectItem = this.selectItem.bind(this);
     this.toggleCategory = this.toggleCategory.bind(this);
     this.toggleSubCategory = this.toggleSubCategory.bind(this);
-    this.toggleMenuItem = this.toggleMenuItem.bind(this);
   }
 
   componentDidMount() {
@@ -113,11 +112,6 @@ export default class RestaurantShow extends React.Component {
     this.setState({'selectedSubCategory': selectedItem});
   }
 
-
-  toggleMenuItem() {
-    var df123 = "te";
-  }
-
   render() {
 
     if (this.props.restaurant 
@@ -162,7 +156,6 @@ export default class RestaurantShow extends React.Component {
       var productList = this.state.productList == null ?this.props.menuItems : this.state.productList;
       const menuItems =  JSON.stringify(productList) == "{}"? [] : productList.map((menuItem,index) => {
         return <MenuItem key={menuItem.productId}  menuItem={menuItem} selectItem={this.selectItem} toggleMenuItemModal={toggleMenuItemModal} />;
-        
       });
 
       return (
