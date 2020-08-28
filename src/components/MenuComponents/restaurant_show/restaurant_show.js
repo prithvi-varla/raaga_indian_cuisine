@@ -27,6 +27,7 @@ export default class RestaurantShow extends React.Component {
     this.selectItem = this.selectItem.bind(this);
     this.toggleCategory = this.toggleCategory.bind(this);
     this.toggleSubCategory = this.toggleSubCategory.bind(this);
+    this.toggleMenuItem = this.toggleMenuItem.bind(this);
   }
 
   componentDidMount() {
@@ -112,6 +113,11 @@ export default class RestaurantShow extends React.Component {
     this.setState({'selectedSubCategory': selectedItem});
   }
 
+
+  toggleMenuItem() {
+    var df123 = "te";
+  }
+
   render() {
 
     if (this.props.restaurant 
@@ -156,16 +162,18 @@ export default class RestaurantShow extends React.Component {
       var productList = this.state.productList == null ?this.props.menuItems : this.state.productList;
       const menuItems =  JSON.stringify(productList) == "{}"? [] : productList.map((menuItem,index) => {
         return <div key={menuItem.productId}>
-                  <div className='menu-item-container'>
-                    <div class="food-item">
-                      <h3 class="title"><a >Crema di Pomodoro</a></h3>
-                      <span class="price">$23.00</span>
+                  <div class="col-md-6">
+                    <div className='menu-item-container' onClick={() => this.toggleMenuItem()}>
+                      <div class="food-item">
+                        <h3 class="title"><a >Crema di Pomodoro</a></h3>
+                        <span class="price">$23.00</span>
 
-                      <p>
-                      Mushrooms, Ruccola, Pomodoro, Mozzarella, Olives
-                      </p>
+                        <p>
+                        Mushrooms, Ruccola, Pomodoro, Mozzarella, Olives
+                        </p>
+                      </div>
                     </div>
-                </div>
+                  </div>
               </div>
         ;
       });
