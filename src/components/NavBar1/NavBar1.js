@@ -416,16 +416,9 @@ class NavBar1 extends React.Component {
                   <li><a href="/contact">Contact</a></li>
                 </ul>
 
-                <div class="right-menu" hidden= {!this.props.isMenuScreen}>
-                {/*hidden= {this.props.isMenuScreen || this.state.mobileMenuOpened}> */}
+                <div class="right-menu" hidden= {this.props.isMenuScreen || this.state.mobileMenuOpened}>
                   <a href="#" class="nav-btn gp-btn">Reservations</a>
                 </div>
-
-                {/*
-                <div className={this.state.mobileMenuOpened ? '' : 'hidden'}>
-                {ttes}
-                </div>
-                */}
 
                 <div className={this.props.location.pathname.includes('menu') ||
                 this.props.location.pathname.includes('checkout') ||
