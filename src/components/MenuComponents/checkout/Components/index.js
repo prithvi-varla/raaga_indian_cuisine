@@ -2,8 +2,15 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form'
 
 import {
-    Form
+    Form,
+    Label,
+    FormGroup,
+    Input,
+    Button
   } from 'reactstrap';
+
+import {renderInputField, required, email, aol, minValue18} from '../../../../util/form_validation_util';
+
 
 class CheckoutForm extends React.Component {
     
@@ -11,10 +18,12 @@ class CheckoutForm extends React.Component {
 render() {
 
     let {
-        handleSubmit, submitting 
+        handleSubmit, pristine, reset, initialValues, submitting 
     } = this.props;
         
   return (
+
+    //<Form onSubmit={handleSubmit}>
       
     <Form onSubmit={handleSubmit(this.props.actionSubmit)}>
 
