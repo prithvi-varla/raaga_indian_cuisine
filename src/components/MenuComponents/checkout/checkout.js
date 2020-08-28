@@ -1,9 +1,3 @@
-
-
-
-
-
-
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Redirect } from 'react-router-dom';
@@ -79,12 +73,11 @@ class Checkout extends React.Component {
     if (localStorage.getItem("token") == null ) {
       this.props.history.push('/');
     }
-    
+
     this.props.updateTip(0.2);
 
     let address, city, state, zip;
 
-// Test123
     this.setState({
       firstName: "",
       lastName: "",
@@ -181,7 +174,6 @@ class Checkout extends React.Component {
   }
 
   render() {
-    // Test123
     if (!this.props.checkoutInfo || !this.props.location.hash.includes('payment')) {
 
       return(

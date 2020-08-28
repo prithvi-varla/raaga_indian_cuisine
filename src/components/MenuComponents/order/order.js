@@ -66,15 +66,6 @@ class Order extends React.Component {
   }
 
   handleCheckout() {
-    // Test123
-   // if (this.state.total < this.props.deliveryMinimum) {
-    //  this.props.receiveDeliveryMinimumErrors();
-   // } else if (this.props.currentUser) {
-   //   this.props.history.push('/checkout');
-      //return<Checkout/>
-   // } else {
-     // this.props.toggleSessionModal();
-    // }
 
     if (this.props.currentUser) {
       this.props.history.push('/checkout');
@@ -84,8 +75,6 @@ class Order extends React.Component {
   }
 
   handleClick() {
-    //Test123
-    /* this.props.history.push(`/restaurants/${this.props.order.restaurantId}`); */
     this.props.history.push(`/menu`);
   }
 
