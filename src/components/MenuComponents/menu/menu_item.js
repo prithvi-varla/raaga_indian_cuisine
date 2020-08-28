@@ -8,6 +8,12 @@ export default class MenuItem extends React.Component {
   constructor(props) {
     super(props);
 
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  toggleCategory123() {
+    this.props.toggleMenuItemModal();
+    this.props.selectItem(this.props.menuItem);
   }
 
   render() {
@@ -16,7 +22,7 @@ export default class MenuItem extends React.Component {
 
     return(
             <div class="col-md-6">
-              <div className='menu-item-container'>
+              <div className='menu-item-container'onClick={() => this.toggleCategory123()}>
                 <div class="food-item">
 
                   <div class="content">
