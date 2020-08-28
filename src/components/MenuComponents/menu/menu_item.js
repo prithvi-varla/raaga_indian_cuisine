@@ -17,6 +17,7 @@ export default class MenuItem extends React.Component {
   }
 
   render() {
+
     const { name, price, description } = this.props.menuItem;
 
     return(
@@ -24,6 +25,14 @@ export default class MenuItem extends React.Component {
               <div className='menu-item-container' 
               onClick={this.handleClick}>
                 <div class="food-item">
+                  {/* 
+                  <div class="food-thumb">
+                    <a href="#">
+                      <img src={storyPic2} alt="food" />
+                      <span><i class="ei ei-icon_plus"></i></span>
+                  </a>
+                  </div>
+                  */}
 
                   <div class="content">
                     <h3 class="title"><a >Crema di Pomodoro</a></h3>
