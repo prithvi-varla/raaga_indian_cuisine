@@ -134,6 +134,24 @@ export default class RestaurantShow extends React.Component {
           );
       });
 
+      var subCategoriesList = this.state.subCategoriesList == null ?this.props.subCategories.data : this.state.subCategoriesList;
+      const subCategories = subCategoriesList.map((subCategory,index) => {
+        var classFlag = this.state.selectedSubCategory != null ? subCategory.categoryId == this.state.selectedSubCategory : index==0;
+        var classname1 =  classFlag ? "menu-filter active" : "menu-filter";
+        return (
+            <div key={subCategory.categoryId} onClick={() => this.toggleSubCategory(subCategory.categoryId)}>
+              {/*
+              <a key={subCategory.categoryId} class={classname1} id="nav-antipasti-tab" data-toggle="tab" href="#nav-antipasti" role="tab" aria-controls="nav-antipasti" aria-selected="true">
+                <span>{subCategory.categoryName}</span>
+              </a>
+              */}
+              <li key={subCategory.categoryId} class={classname1} id="nav-antipasti-tab" data-toggle="tab" href="#nav-antipasti" role="tab" aria-controls="nav-antipasti" aria-selected="true">
+                <span>{subCategory.categoryName}</span>
+              </li>
+            </div>
+            
+        );
+      });
 
       var productList = this.state.productList == null ?this.props.menuItems : this.state.productList;
 
@@ -158,8 +176,21 @@ export default class RestaurantShow extends React.Component {
 
                 <div class="food-tabs-wrapper wow fadeInUp" data-wow-delay="0.5s">
 
+                  <nav class="tabs-inner">
+                    <div class="nav menu-tabs" role="tablist">
+
+                      {categories}
+                    </div>
+                  </nav>
+
                   <div class="tab-content tab-content-top">
                     <div class="tab-pane fade show active" id="zoetig" role="tabpanel" aria-labelledby="zoetig-tab">
+
+                    <ul class="menu-filter" data-wow-delay="0.4s">
+
+                          {subCategories}
+                        
+                      </ul>
 
                       <ul className='menu'>
 
