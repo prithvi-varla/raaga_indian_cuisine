@@ -13,6 +13,8 @@ export default class MenuItem extends React.Component {
   }
 
   toggleCategory123() {
+    this.props.toggleMenuItemModal();
+    this.props.selectItem(this.props.menuItem);
   }
 
   render() {
