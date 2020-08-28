@@ -179,8 +179,9 @@ class Checkout extends React.Component {
       return(
         <div className='checkout-container' onClick={this.props.itemInstructionsError ? this.props.clearErrors : null}>
           <NavBar1 isMenuScreen = "true"/>
-          <div className='checkout-main'>
-            <CheckoutForm {...this.props} actionSubmit={this.handleSubmit}/>
+
+          <div className='order-container'>
+            <Order />
           </div>
         </div>
       );
