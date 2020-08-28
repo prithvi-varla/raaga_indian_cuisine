@@ -154,6 +154,9 @@ export default class RestaurantShow extends React.Component {
       });
 
       var productList = this.state.productList == null ?this.props.menuItems : this.state.productList;
+      const menuItems =  JSON.stringify(productList) == "{}"? [] : productList.map((menuItem,index) => {
+        return <MenuItem key={menuItem.productId}  menuItem={menuItem} selectItem={this.selectItem} toggleMenuItemModal={toggleMenuItemModal} />;
+      });
 
       return (
         <div>
@@ -193,6 +196,14 @@ export default class RestaurantShow extends React.Component {
                       </ul>
 
                       <ul className='menu'>
+
+                      <div class="tab-content tab-content-child">
+                        <div  class="tab-pane fade show active" id="nav-insalatone" role="tabpanel" aria-labelledby="nav-insalatone-tab">
+									        <div class="row">
+                              {menuItems}
+									        </div>
+								        </div>
+                      </div>
 
                         { menuItemModal ? <MenuItemModal menuItem={this.state.currentItem} deliveryFee={this.props.restaurant.delivery_fee} deliveryMinimum={this.props.restaurant.delivery_minimum} toggleMenuItemModal={toggleMenuItemModal}
                         restaurantName={this.props.restaurant.name}/> : null }
