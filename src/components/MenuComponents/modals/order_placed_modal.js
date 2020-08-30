@@ -2,7 +2,6 @@ import React from 'react';
 import { deleteAllItems } from '../../../actions/order_item_actions';
 import { deleteOrder, deleteOrderItems } from '../../../session_storage/session_storage';
 import { removeCheckoutInfo } from '../../../actions/checkout_actions';
-import { sendOrderConfirmation } from '../../../actions/email_actions';
 import { toggleOrderPlacedModal, toggleReviewModal } from '../../../actions/modal_actions';
 import { pick, pickBy, merge } from 'lodash';
 import { withRouter } from 'react-router-dom';
@@ -10,6 +9,7 @@ import { connect } from 'react-redux';
 
 import './order_item.css';
 import './order_placed_modal.css';
+import raagLogo from "../../../assets/images/raag.png"
 
 const mapStateToProps = state => ({
   order: state.entities.order,
@@ -19,7 +19,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   deleteAllItems: () => dispatch(deleteAllItems()),
   removeCheckoutInfo: () => dispatch(removeCheckoutInfo()),
-  sendOrderConfirmation: (email, order, items) => dispatch(sendOrderConfirmation(email, order, items)),
   toggleOrderPlacedModal: () => dispatch(toggleOrderPlacedModal()),
   toggleReviewModal: () => dispatch(toggleReviewModal())
 });
@@ -35,8 +34,6 @@ class OrderPlacedModal extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.toggleOrderPlacedModal = this.toggleOrderPlacedModal.bind(this);
-    this.goToReview = this.goToReview.bind(this);
-    this.sendOrderConfirmation = this.sendOrderConfirmation.bind(this);
   }
 
   handleChange() {
@@ -56,52 +53,6 @@ class OrderPlacedModal extends React.Component {
       deleteOrderItems();
       this.props.toggleOrderPlacedModal();
     }
-  }
-
-  goToReview() {
-    const restaurantId = this.props.order.restaurantId;
-    this.props.deleteAllItems();
-    this.props.removeCheckoutInfo();
-    deleteOrder();
-    deleteOrderItems();
-    this.props.toggleOrderPlacedModal();
-    this.props.toggleReviewModal();
-    this.props.history.push(`/restaurants/${restaurantId}`);
-  }
-
-  sendOrderConfirmation(e) {
-    e.preventDefault();
-    const email = this.state.email;
-
-    let order = merge({}, this.props.order);
-    order.restaurant_name = order.restaurantName;
-    order.delivery_fee = order.deliveryFee;
-    order = pick(order, ['restaurant_name', 'subtotal', 'delivery_fee', 'tax', 'tip', 'total']);
-
-    let items = Object.values(this.props.orderItems);
-    items.forEach((item, idx) => {
-      item.item_instructions = item.itemInstructions;
-
-      if (item.options) {
-        item.options_list = Array.from(item.options.values());
-
-        while (item.options_list.some(el => el instanceof Array)) {
-          item.options_list.forEach((option, idx) => {
-            if (option instanceof Array) item.options_list.splice(idx, 1, ...option);
-          });
-        }
-
-        item.options_list.forEach((option, idx) => {
-          if (option === null) return;
-          item.options_list[idx] = pick(option, 'name');
-        });
-      }
-
-      items[idx] = pick(item, ['name', 'price', 'quantity', 'item_instructions', 'options_list']);
-    });
-
-    this.props.sendOrderConfirmation(email, order, items);
-    this.setState({email: "", emailSent: true});
   }
 
   render() {
@@ -134,13 +85,12 @@ class OrderPlacedModal extends React.Component {
     return (
       <div className='modal-container' onClick={this.toggleOrderPlacedModal}>
         <div className='order-placed-modal'>
-          {/* Test123 */}
-          {/* <img className='logo' src={window.staticImages.logo} alt='FoodDotCom' /> */}
+           <img className='logo' src={raagLogo} alt='Raag' /> 
           <h2 className='heading'>Your order has been placed!</h2>
 
           <div className='modal-order-info'>
             <div className='modal-review-subheader'>
-              <h5>Your order from <span id='modal-restaurant-name'>{restaurantName}</span> was:</h5>
+              <h5>Your order details are as below:</h5>
             </div>
 
             <ul className='modal-order-list'>
@@ -149,15 +99,6 @@ class OrderPlacedModal extends React.Component {
 
             <div className='totals'>
               <div className='totals-actions'>
-                <div className='review-link' onClick={this.goToReview}>Leave a Review</div>
-                <div className='modal-footer-container'>
-                  <h6>Receive an email receipt of your order below.</h6>
-                  <div className='modal-email-send-container'>
-                    <input type='email' placeholder='Email' value={`${this.state.email}`} onChange={this.handleChange()} />
-                    <input type='submit' value='Send' onClick={this.sendOrderConfirmation} />
-                  </div>
-                  <div className={this.state.emailSent ? 'email-sent' : 'hidden'}>Your email confirmation was sent!</div>
-                </div>
               </div>
 
               <div className='totals-container'>

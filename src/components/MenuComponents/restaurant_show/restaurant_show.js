@@ -8,6 +8,8 @@ import NavBar1 from '../../NavBar1/NavBar1';
 import { MenuBanner } from './MenuBanner';
 
 import './restaurant_show.css';
+import { ContactPage } from '../../../components/ContactPage/ContactPage';
+import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
 
 
 export default class RestaurantShow extends React.Component {
@@ -137,18 +139,11 @@ export default class RestaurantShow extends React.Component {
       var subCategoriesList = this.state.subCategoriesList == null ?this.props.subCategories.data : this.state.subCategoriesList;
       const subCategories = subCategoriesList.map((subCategory,index) => {
         var classFlag = this.state.selectedSubCategory != null ? subCategory.categoryId == this.state.selectedSubCategory : index==0;
-        var classname1 =  classFlag ? "menu-filter active" : "menu-filter";
+        var classname1 =  classFlag ? "menu-filter current" : "menu-filter";
         return (
-            <div key={subCategory.categoryId} onClick={() => this.toggleSubCategory(subCategory.categoryId)}>
-              {/*
-              <a key={subCategory.categoryId} class={classname1} id="nav-antipasti-tab" data-toggle="tab" href="#nav-antipasti" role="tab" aria-controls="nav-antipasti" aria-selected="true">
-                <span>{subCategory.categoryName}</span>
-              </a>
-              */}
-              <li key={subCategory.categoryId} class={classname1} id="nav-antipasti-tab" data-toggle="tab" href="#nav-antipasti" role="tab" aria-controls="nav-antipasti" aria-selected="true">
-                <span>{subCategory.categoryName}</span>
-              </li>
-            </div>
+          <li key={subCategory.categoryId} class={classname1} id="nav-antipasti-tab" data-toggle="tab" href="#nav-antipasti" role="tab" aria-controls="nav-antipasti" aria-selected="true" onClick={() => this.toggleSubCategory(subCategory.categoryId)}>
+            <span>{subCategory.categoryName}</span>
+          </li>
             
         );
       });
@@ -158,6 +153,18 @@ export default class RestaurantShow extends React.Component {
         return <MenuItem key={menuItem.productId}  menuItem={menuItem} selectItem={this.selectItem} toggleMenuItemModal={toggleMenuItemModal} />;
       });
 
+      let view;
+      view = (
+        <CSSTransitionGroup
+          transitionName="fadeIn"
+          transitionEnterTimeout={1000}
+          transitionLeaveTimeout={1000}
+          component="div"
+          className="row"
+        >
+          {menuItems}
+        </CSSTransitionGroup>
+      );
       return (
         <div>
 
@@ -199,9 +206,8 @@ export default class RestaurantShow extends React.Component {
 
                       <div class="tab-content tab-content-child">
                         <div  class="tab-pane fade show active" id="nav-insalatone" role="tabpanel" aria-labelledby="nav-insalatone-tab">
-									        <div class="row">
-                              {menuItems}
-									        </div>
+									        
+                              {view}
 								        </div>
                       </div>
 
@@ -212,14 +218,15 @@ export default class RestaurantShow extends React.Component {
                     </div>
                   </div>
                 </div>
-              </div>    
+              </div>  
+              
+          <ContactPage />  
             </div>
 
             <div className='order-container'>
               <Order selectItem={this.selectItem} toggleMenuItemModal={toggleMenuItemModal}/>
             </div>
           </div>
-
         </div>
       );
     } else {

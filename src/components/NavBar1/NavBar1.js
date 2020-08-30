@@ -28,6 +28,8 @@ import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
 
 import cartBag from './img/shopping-bag.svg';
 
+import { loadUser } from '../../session_storage/session_storage';
+
 
 // Height in px for navbar
 const navbarHeight = 0;
@@ -173,7 +175,7 @@ class NavBar1 extends React.Component {
 
   handleCheckout() {
 
-    if (this.props.currentUser) {
+    if (this.props.currentUser || loadUser()) {
       this.props.history.push('/checkout');
     } else {
       this.props.toggleSessionModal();

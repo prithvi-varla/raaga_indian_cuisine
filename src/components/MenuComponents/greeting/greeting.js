@@ -2,6 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Redirect } from 'react-router-dom';
 import SessionModalContainer from '../modals/session_modal_container';
+import OrderPlacedModal from '../../MenuComponents/modals/order_placed_modal';
+
+import Loading from '../../Loading/Loading';
 
 class Greeting extends React.Component {
   constructor(props) {
@@ -23,15 +26,17 @@ class Greeting extends React.Component {
   }
 
   render() {
-    const { currentUser, sessionModal } = this.props;
+    const { currentUser, sessionModal, orderPlacedModal } = this.props;
 
-    if (currentUser !== null ) {
+    if (currentUser !== null || localStorage.getItem("token") != null ) {
       return (
         <div className='logged-in-section'>
+          <Loading />
+          { orderPlacedModal ? <OrderPlacedModal /> : null }
           <div class="right-menu">
           <button className='nav-btn gp-btn' onClick={this.handleLogout}>Log&nbsp;Out</button>
           </div>
-          <h3 className='welcome-message'>Welcome, </h3>
+          <h3 className='welcome-message'>Welcome User</h3>
         </div>
       );
     } else {

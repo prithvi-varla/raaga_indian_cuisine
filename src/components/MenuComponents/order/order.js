@@ -67,7 +67,7 @@ class Order extends React.Component {
 
   handleCheckout() {
 
-    if (this.props.currentUser) {
+    if (this.props.currentUser || localStorage.getItem("token") != null) {
       this.props.history.push('/checkout');
     } else {
       this.props.toggleSessionModal();

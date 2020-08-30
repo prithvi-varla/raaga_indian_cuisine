@@ -11,6 +11,8 @@ import { createOrder } from '../../../actions/order_item_actions';
 
 import './checkout.css'
 
+import { ContactPage } from '../../../components/ContactPage/ContactPage';
+
 import CheckoutForm from './Components/index';
 
 const mapStateToProps = state => ({
@@ -133,39 +135,38 @@ class Checkout extends React.Component {
   }
 
   placeOrder(e) {
-    e.preventDefault();
 
     let payload = merge({}, this.props.order);
     //payload.user_id = this.props.currentUser.id;
-    payload.restaurant_id = payload.restaurantId;
-    payload.delivery_fee = payload.deliveryFee;
-    payload.delivery_instructions = this.state.deliveryInstructions;
+    //payload.restaurant_id = payload.restaurantId;
+    payload.deliveryFee = payload.deliveryFee;
+    payload.deliveryInstructions = this.state.deliveryInstructions;
 
-    payload.order_items_attributes = this.props.orderItems;
-    payload.order_items_attributes.forEach((orderItem, idx) => {
-      orderItem.item_instructions = orderItem.itemInstructions;
-      orderItem.menu_item_id = orderItem.id;
+    payload.orderItems = this.props.orderItems;
+    payload.orderItems.forEach((orderItem, idx) => {
+      orderItem.itemInstructions = orderItem.itemInstructions;
+      orderItem.productId = orderItem.id;
 
       if (orderItem.options) {
-        orderItem.order_item_options_attributes = Array.from(orderItem.options.values());
+        orderItem.orderItemOptions = Array.from(orderItem.options.values());
 
-        while (orderItem.order_item_options_attributes.some(el => el instanceof Array)) {
-          orderItem.order_item_options_attributes.forEach((option, idx) => {
-            if (option instanceof Array) orderItem.order_item_options_attributes.splice(idx, 1, ...option);
+        while (orderItem.orderItemOptions.some(el => el instanceof Array)) {
+          orderItem.orderItemOptions.forEach((option, idx) => {
+            if (option instanceof Array) orderItem.orderItemOptions.splice(idx, 1, ...option);
           });
         }
 
-        orderItem.order_item_options_attributes.forEach((option, idx) => {
+        orderItem.orderItemOptions.forEach((option, idx) => {
           if (option === null) return;
           option.item_option_id = option.id;
-          orderItem.order_item_options_attributes[idx] = pick(option, 'item_option_id');
+          orderItem.orderItemOptions[idx] = pick(option, 'item_option_id');
         });
       }
 
-      payload.order_items_attributes[idx] = pick(orderItem, ['menu_item_id', 'quantity', 'item_instructions', 'order_item_options_attributes']);
+      payload.orderItems[idx] = pick(orderItem, ['productId', 'quantity', 'itemInstructions', 'orderItemOptions']);
     });
 
-    payload = pick(payload, ['user_id', 'restaurant_id', 'subtotal', 'tax', 'tip', 'delivery_fee', 'total', 'delivery_instructions', 'order_items_attributes']);
+    payload = pick(payload, [ 'subtotal', 'tax', 'tip', 'deliveryFee', 'total', 'deliveryInstructions', 'orderItems']);
 
     this.props.createOrder(payload).then(() => {
       this.props.history.push('/');
@@ -179,10 +180,28 @@ class Checkout extends React.Component {
       return(
         <div className='checkout-container' onClick={this.props.itemInstructionsError ? this.props.clearErrors : null}>
           <NavBar1 isMenuScreen = "true"/>
+          <div className='checkout-show-main'>
           <div className='checkout-main'>
-            <CheckoutForm {...this.props} actionSubmit={this.handleSubmit}/>
-          </div>
+            <form className='checkout-form'>
+              <h1>You've entered user information</h1>
+              <h5>Does everything below look correct?</h5>
 
+              <h3>Contact</h3>
+              <input className='contact-input' type='text' value={this.state.firstName} onChange={this.update('firstName')}/>
+              <input className='contact-input' type='text' value={this.state.lastName} onChange={this.update('lastName')}/>
+              <input className='contact-input' type='email' value={this.state.email} onChange={this.update('email')}/>
+              <input className='contact-input' type='text' placeholder='e.g. 555 555 1212' value={this.state.phone} onChange={this.update('phone')}/>
+
+              <textarea className='deliveryInstructions' placeholder='Delivery instructions (e.g. Check in with doorman.)' value={this.state.deliveryInstructions} onChange={this.updateDeliveryInstructions()}></textarea>
+
+              <h6 className='errors'>{this.props.itemInstructionsError ? this.props.itemInstructionsError : null}</h6>
+
+              <button className='continue-to-payment' onClick={this.handleSubmit}>Continue to payment method</button>
+            </form>
+          
+          </div>
+          <ContactPage />  
+          </div>
           <div className='order-container'>
             <Order />
           </div>
@@ -194,6 +213,7 @@ class Checkout extends React.Component {
       return (
         <div className='checkout-container'>
           <NavBar1 isMenuScreen = "true"/>
+          <div className='checkout-show-main'>
           <div className='checkout-main'>
             <h1>Review and place order</h1>
             <h5>Review address, payments, and tip to complete your purchase</h5>
@@ -238,7 +258,9 @@ class Checkout extends React.Component {
 
 
             <button className='place-your-order' onClick={this.placeOrder}>Place Your Order</button>
+          </div>
 
+          <ContactPage />  
           </div>
 
           <div className='order-container'>

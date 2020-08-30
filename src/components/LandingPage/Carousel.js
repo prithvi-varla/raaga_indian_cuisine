@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { fetchImages } from '../../actions/modal_actions';
 import { fetchRestaurants } from '../../actions/restaurant_actions';
 import Loading from '../Loading/Loading';
+import OrderPlacedModal from '../../components/MenuComponents/modals/order_placed_modal';
 
 import "react-animated-slider/build/horizontal.css";
 import "./slider-animations.css";
@@ -50,7 +51,8 @@ const settings = {
 
 const mapStateToProps = state => ({
     restaurant: state.entities.restaurants,
-    galleryItems: state.ui.gallery
+    galleryItems: state.ui.gallery,
+    orderPlacedModal: state.ui.modals.orderPlacedModal
   });
 
 const mapDispatchToProps = dispatch => ({
@@ -81,7 +83,7 @@ class Carousel extends React.Component {
 
     render() {  
 
-        var df = this.props.galleryItems.images;
+        var df = this.props.orderPlacedModal;
         var images;
         if (this.props.galleryItems.images) {
             images = this.props.galleryItems.images
@@ -91,6 +93,7 @@ class Carousel extends React.Component {
         return (
             <div>
                 <Loading />
+                { this.props.orderPlacedModal ? <OrderPlacedModal /> : null }
                 <Slider {...settings} className="slider-wrapper" ref={ref => (this.sliderRef = ref)}>
                 {images.map((item, index) => (
                     <div

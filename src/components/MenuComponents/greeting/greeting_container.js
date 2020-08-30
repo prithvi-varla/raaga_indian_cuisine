@@ -7,7 +7,8 @@ import { connect } from 'react-redux';
 const mapStateToProps = (state) => ({
   currentUser: state.session.currentUser,
   sessionModal: state.ui.modals.sessionModal,
-  signupModal: state.ui.modals.signupModal
+  signupModal: state.ui.modals.signupModal,
+  orderPlacedModal: state.ui.modals.orderPlacedModal
 });
 
 const mapDispatchToProps = (dispatch) => ({

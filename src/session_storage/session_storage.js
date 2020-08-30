@@ -1,3 +1,32 @@
+export const loadUser = () => {
+  try {
+    const user = sessionStorage.getItem('user');
+    if (user === null) {
+      return undefined;
+    }
+    return user;
+  } catch (error) {
+    return undefined;
+  }
+};
+
+export const saveUser = (user) => {
+  try {
+    const serializedAddress = JSON.stringify(user);
+    sessionStorage.setItem('user', serializedAddress);
+  } catch (error) {
+
+  }
+};
+
+export const deleteUser = () => {
+  try {
+    sessionStorage.removeItem('user');
+  } catch (error) {
+
+  }
+};
+
 export const loadAddress = () => {
   try {
     const address = sessionStorage.getItem('address');
