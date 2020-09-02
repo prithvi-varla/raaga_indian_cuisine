@@ -9,6 +9,6 @@ export const fetchGalleryImages = restaurantId => {
 
 export const fetchImages = (restaurantId, imageType) => {
 
-  return fetch(bonmunch_endpoint+'/bonmunch/v1/companies/12345678-1234-1234-1234-123456789112/images?page=0&imageType=LANDING_PAGE')
+  return fetch(bonmunch_endpoint+'/bonmunch/v1/companies/'+restaurantId+'/images?page=0&imageType='+imageType)
             .then(res => res.json())
 };

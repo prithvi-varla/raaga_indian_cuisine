@@ -34,49 +34,21 @@ export default class RestaurantShow extends React.Component {
   componentDidMount() {
     
     if (this.props.restaurant.companyId) {
-
-      //Test123 (modify existing order is stopping to work because of 1 == "1" validatin and deleting the  order items)
-      // if (this.props.restaurant.id !== parseInt(this.props.orderRestaurantId)) {
-      //  this.props.deleteAllItems();
-      // } 
-
-      var dfd = sessionStorage.getItem('restaurants');
-
-     
       this.props.fetchCategories("CATEGORY").then(() => {
         this.props.fetchSubCategories("SUB_CATEGORY").then(() => {
           this.props.fetchMenuItems();
           this.props.fetchMenuItems().then(() => { 
             var d = this.props.categories.data[0];
-            this.toggleCategory(d.categoryId);
+            if (this.props.categories.data.length > 0) {
+              this.toggleCategory(d.categoryId);
+            }
             });
           });
       });
-      
-      //this.props.categories[0];
-      // Test123
-      //this.props.fetchReviews(this.props.match.params.id);
-
-      //if (this.props.currentUser) {
-      //  this.props.fetchReviewable(this.props.match.params.id);
-      //}
     } else {
-
-      this.props.fetchRestaurantInfo()
-      //var dfd = Object.values(sessionStorage.getItem('restaurants'));
-      //  this.props.fetchMenuItems(this.props.match.params.id);
-      //  var dfdd= sessionStorage.getItem('restaurants');
-
+      this.props.fetchRestaurantInfo();
     }
   }
-
-  //Test123 (modify existing order is stopping to work because of 1 == "1" validatin and deleting the  order items)
-  // componentDidUpdate() {
-  //  if ((parseInt(this.props.match.params.id) !== this.props.orderRestaurantId) && (Number.isInteger(this.props.orderRestaurantId))) {
-  //    this.props.deleteAllItems();
-  //    this.props.fetchMenuItems(this.props.match.params.id);
-  //  }
-  // }
 
   selectItem(selectedItem) {
     this.setState({currentItem: selectedItem});
@@ -89,7 +61,6 @@ export default class RestaurantShow extends React.Component {
       var  subCategories = this.props.subCategories.data.filter(subCategory=> subCategory.parentCategoryId === selectedItem);
       //this.setState({'productList': ""});
       this.setState({'subCategoriesList': subCategories});
-
 
       if (subCategories.length > 0) {
 
@@ -105,9 +76,7 @@ export default class RestaurantShow extends React.Component {
   }
 
   toggleSubCategory(selectedItem) {
-    var df123 = "te";
-
-    var orderItemIds = [];
+    
    var  element = this.props.menuItems.filter(menuItem => menuItem.categoryId === selectedItem);
     //this.setState({'productList': ""});
     this.setState({'productList': element});

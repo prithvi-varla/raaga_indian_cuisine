@@ -419,7 +419,7 @@ class NavBar1 extends React.Component {
                 </ul>
 
                 <div class="right-menu" hidden= {this.props.isMenuScreen || this.state.mobileMenuOpened}>
-                  <a href="#" class="nav-btn gp-btn">Reservations</a>
+                  <a href="https://resy.com/cities/msp/raag-progressive-indian-cuisine" class="nav-btn gp-btn" target="_blank">Reservations</a>
                 </div>
 
                 <div className={this.props.location.pathname.includes('menu') ||

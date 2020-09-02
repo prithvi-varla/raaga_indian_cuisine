@@ -3,6 +3,7 @@
 import React from "react";
 import Slider from "react-animated-slider";
 import { connect } from 'react-redux';
+import { withRouter, Redirect } from 'react-router-dom';
 
 import { fetchImages } from '../../actions/modal_actions';
 import { fetchRestaurants } from '../../actions/restaurant_actions';
@@ -13,31 +14,32 @@ import "react-animated-slider/build/horizontal.css";
 import "./slider-animations.css";
 import "./styles.css";
 
+import raag1 from "./img/Raag_Landing_1.jpg";
+import raag2 from "./img/Raag_Landing_2.jpg";
+import raag3 from "./img/Raag_Landing_3.jpg";
+import raag4 from "./img/Raag_Landing_4.jpg";
+
 const content = [
   {
-    title: "Vulputate Mollis Ultricies Fermentum Parturient",
-    description:
-      "Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cras justo odio, dapibus ac facilisis.",
-    button: "Read More",
-    image: "https://i.imgur.com/ZXBtVw7.jpg",
-    user: "Luan Gjokaj",
-    userProfile: "https://i.imgur.com/JSW6mEk.png"
+    "imageName": "indian menu",
+    "imageDescription": "Indian cusine menu",
+    "srcUrl": "https://www.diversifiedconstruction.com/wp-content/uploads/2019/11/RAAG-26.jpg",
+    "buttonName":  "Menu",
+    "buttonUri": "/menu"
   }, 
   {
-    title: "Tortor Dapibus Commodo Aenean Quam",
-    description:
-      "Nullam id dolor id nibh ultricies vehicula ut id elit. Cras mattis consectetur purus sit amet fermentum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec sed odio dui.",
-    button: "Discover",
-    image: "https://i.imgur.com/DCdBXcq.jpg",
-    user: "Erich Behrens",
-    userProfile: "https://i.imgur.com/0Clfnu7.png"
-  },
+    "imageName": "Delivery methods",
+    "imageDescription": "All Deliveries are in below link",
+    "srcUrl": "https://www.diversifiedconstruction.com/wp-content/uploads/2019/11/RAAG-13.jpg",
+    "buttonName":  "Delivery",
+    "buttonUri": "/delivery"
+  }, 
   {
-    title: "Phasellus volutpat metus",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Duis mollis, est non commodo luctus, nisi erat porttitor ligula.",
-    button: "Buy now",
-    image: "https://i.imgur.com/DvmN8Hx.jpg"
+    "imageName": "Delivery methods",
+    "imageDescription": "All Deliveries are in below link",
+    "srcUrl": "https://www.diversifiedconstruction.com/wp-content/uploads/2019/11/RAAG-13.jpg",
+    "buttonName":  "Delivery",
+    "buttonUri": "/delivery"
   }
 ];
 
@@ -66,12 +68,14 @@ class Carousel extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.imageUriLink = this.imageUriLink.bind(this);
     }
 
     componentDidMount() {
         this.timerID = setInterval(this.sliderRef.next, 4000);
         this.props.fetchRestaurantInfo().then(() => {
-            this.props.fetchImages(this.props.restaurant.companyId, "LANDING_PAGE");
+            this.props.fetchImages(process.env.REACT_APP_ENTITY_ID, "LANDING_PAGE");
             });
     }
 
@@ -81,11 +85,16 @@ class Carousel extends React.Component {
         }
     }
 
+    imageUriLink(imageUri) {
+      this.props.history.push(imageUri);
+      
+    }
+
     render() {  
 
         var df = this.props.orderPlacedModal;
         var images;
-        if (this.props.galleryItems.images) {
+        if (this.props.galleryItems.images !== undefined && this.props.galleryItems.images.length > 0) {
             images = this.props.galleryItems.images
         } else {
             images = content; 
@@ -102,9 +111,9 @@ class Carousel extends React.Component {
                     style={{ background: `url('${item.srcUrl}') no-repeat center center` }}
                     >
                     <div className="inner">
-                        <h1>{item.name}</h1>
-                        <p>{item.description}</p>
-                        <button className="landing-button">{item.button}</button>
+                        <h1>{item.imageName}</h1>
+                        <p>{item.imageDescription}</p>
+                        <button className="landing-button" onClick={this.imageUriLink.bind(this, `${item.buttonUri}`)}>{item.buttonName}</button>
                     </div>
                     </div>
                 ))}
@@ -114,4 +123,4 @@ class Carousel extends React.Component {
         }
     }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Carousel);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Carousel));
